@@ -81,7 +81,7 @@ async def sender_bH(event):
             if (cc,mes,ano ,cvv):
                 if len(ano) == 2:
                     ano = "20"+ str(ano)
-                cc = f'{cc}|{mes}|{ano}|{cvv}
+                cc = f'{cc}|{mes}|{ano}|{cvv}'
             await BotzHubUser.send_message(
                 i,
                 cc
