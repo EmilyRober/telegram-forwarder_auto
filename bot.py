@@ -21,6 +21,32 @@ logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s'
 
 print("Starting...")
 
+
+def checkLuhn(cardNo):
+     
+    nDigits = len(cardNo)
+    nSum = 0
+    isSecond = False
+     
+    for i in range(nDigits - 1, -1, -1):
+        d = ord(cardNo[i]) - ord('0')
+     
+        if (isSecond == True):
+            d = d * 2
+  
+        # We add two digits to handle
+        # cases that make two digits after
+        # doubling
+        nSum += d // 10
+        nSum += d % 10
+  
+        isSecond = not isSecond
+     
+    if (nSum % 10 == 0):
+        return True
+    else:
+        return False
+
 # Basics
 APP_ID = config("APP_ID", default=None, cast=int)
 API_HASH = config("API_HASH", default=None)
@@ -46,11 +72,10 @@ async def sender_bH(event):
             text = med.replace('\n',' ').replace('\r',' ')
             input = re.findall(r"[0-9]+", text)
             if not input or len(input) < 3:
-                await m.sod("No Cards Found From Your Input. Try Again With A Valid Input.", time = 5)
                 return
             if len(input) == 3:
                 cc = input[0]
-                if not checkLuhn(cc): return await m.sod("Invalid Card Number. Try Again With A Valid Input.", time = 5)
+                if not checkLuhn(cc): return
                 if len(input[1]) == 3:
                     mes = input[2][:2]
                     ano = input[2][2:]
