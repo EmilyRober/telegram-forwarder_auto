@@ -73,19 +73,19 @@ async def sender_bH(event):
                     mes = ano
                     ano = ano1
                 if cc[0] == 3 and len(cc) != 15 or len(cc) != 16 or int(cc[0]) not in [2,3,4,5,6]:
-                return
-            if len(mes) not in [2 , 4] or len(mes) == 2 and mes > '12' or len(mes) == 2 and mes < '01':
-                return
-            if cc[0] == 3 and len(cvv) != 4 or len(cvv) != 3:
-                return 
-            if (cc,mes,ano ,cvv):
-                if len(ano) == 2:
+                 return
+                if len(mes) not in [2 , 4] or len(mes) == 2 and mes > '12' or len(mes) == 2 and mes < '01':
+                 return
+                if cc[0] == 3 and len(cvv) != 4 or len(cvv) != 3:
+                 return 
+                if (cc,mes,ano ,cvv):
+                 if len(ano) == 2:
                     ano = "20"+ str(ano)
-                cc = f'{cc}|{mes}|{ano}|{cvv}'
+                 cc = f'{cc}|{mes}|{ano}|{cvv}'
             await BotzHubUser.send_message(
                 i,
                 cc
-            )
+                 )
         except Exception as e:
             print(e)
 
