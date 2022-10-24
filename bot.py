@@ -43,6 +43,7 @@ async def sender_bH(event):
     for i in TO:
         try:
             med = event.message
+            print(med)
             text = med.replace('\n',' ')
             text = text.replace('\r',' ')
             input = re.findall(r"[0-9]+", text)
