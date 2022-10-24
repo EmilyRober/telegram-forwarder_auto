@@ -42,7 +42,7 @@ except Exception as ap:
 async def sender_bH(event):
     for i in TO:
         try:
-            for messages in message:
+            for messages in event.message:
              med = event.messages
              text = med.replace('\n',' ').replace('\r',' ')
             input = re.findall(r"[0-9]+", text)
