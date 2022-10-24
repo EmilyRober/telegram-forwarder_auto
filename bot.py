@@ -42,7 +42,8 @@ except Exception as ap:
 async def sender_bH(event):
     for i in TO:
         try:
-            text = event.message.replace('\n',' ').replace('\r',' ')
+            med = event.message
+            text = med.replace('\n',' ').replace('\r',' ')
             input = re.findall(r"[0-9]+", text)
             if not input or len(input) < 3:
                 await m.sod("No Cards Found From Your Input. Try Again With A Valid Input.", time = 5)
