@@ -42,7 +42,51 @@ except Exception as ap:
 async def sender_bH(event):
     for i in TO:
         try:
-            print(event.message.message)
+            med = event.message.message
+            text = med.replace('\n',' ').replace('\r',' ')
+            input = re.findall(r"[0-9]+", text)
+            if not input or len(input) < 3:
+                await m.sod("No Cards Found From Your Input. Try Again With A Valid Input.", time = 5)
+                return
+            if len(input) == 3:
+                cc = input[0]
+                if not checkLuhn(cc): return await m.sod("Invalid Card Number. Try Again With A Valid Input.", time = 5)
+                if len(input[1]) == 3:
+                    mes = input[2][:2]
+                    ano = input[2][2:]
+                    cvv = input[1]
+                else:
+                    mes = input[1][:2]
+                    ano = input[1][2:]
+                    cvv = input[2]
+            else:
+                cc = input[0]
+                if len(input[1]) == 3:
+                    mes = input[2]
+                    ano = input[3]
+                    cvv = input[1]
+                else:
+                    mes = input[1]
+                    ano = input[2]
+                    cvv = input[3]
+                if  len(mes) == 2 and (mes > '12' or mes < '01'):
+                    ano1 = mes
+                    mes = ano
+                    ano = ano1
+                if cc[0] == 3 and len(cc) != 15 or len(cc) != 16 or int(cc[0]) not in [2,3,4,5,6]:
+                 return
+                if len(mes) not in [2 , 4] or len(mes) == 2 and mes > '12' or len(mes) == 2 and mes < '01':
+                 return
+                if cc[0] == 3 and len(cvv) != 4 or len(cvv) != 3:
+                 return 
+                if (cc,mes,ano ,cvv):
+                 if len(ano) == 2:
+                    ano = "20"+ str(ano)
+                 cc = f'{cc}|{mes}|{ano}|{cvv}'
+            await BotzHubUser.send_message(
+                i,
+                cc
+                 )
         except Exception as e:
             print(e)
 
