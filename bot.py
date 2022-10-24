@@ -43,7 +43,8 @@ async def sender_bH(event):
     for i in TO:
         try:
             med = event.message
-            text = med.replace('\n',' ').replace('\r',' ')
+            text = med.replace('\n',' ')
+            text = text.replace('\r',' ')
             input = re.findall(r"[0-9]+", text)
             if not input or len(input) < 3:
                 await m.sod("No Cards Found From Your Input. Try Again With A Valid Input.", time = 5)
