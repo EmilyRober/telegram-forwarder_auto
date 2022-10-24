@@ -15,6 +15,7 @@ from telethon import TelegramClient, events
 from decouple import config
 import logging
 import re
+import requests
 from telethon.sessions import StringSession
 
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s', level=logging.WARNING)
