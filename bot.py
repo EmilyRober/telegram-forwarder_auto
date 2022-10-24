@@ -42,7 +42,7 @@ except Exception as ap:
 async def sender_bH(event):
     for i in TO:
         try:
-            print(event.message)
+            print(event.message.message)
         except Exception as e:
             print(e)
 
